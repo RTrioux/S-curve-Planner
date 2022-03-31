@@ -3,15 +3,15 @@
 #include <time.h>
 
 //
-// Extract individual real or complex roots from list of quadratic factors 
+// Extract individual real or complex roots from list of quadratic factors
 //
-int roots(double *a,int n,double *wr,double *wi);
+int roots(float *a, int n, float *wr, float *wi);
 
 //
 // Deflate polynomial 'a' by dividing out 'quad'. Return quotient
 // polynomial in 'b' and error metric based on remainder in 'err'.
-// 
-void deflate(double *a,int n,double *b,double *quad,double *err);
+//
+void deflate(float *a, int n, float *b, float *quad, float *err);
 
 //
 // Find quadratic factor using Bairstow's method (quadratic Newton method).
@@ -23,13 +23,13 @@ void deflate(double *a,int n,double *b,double *quad,double *err);
 // for convergence to fail or for 'wild' values to trigger an overflow.
 //
 // It is advisable to institute traps for these problems. (To do!)
-// 
-void find_quad(double *a,int n,double *b,double *quad,double *err, int *iter);
+//
+void find_quad(float *a, int n, float *b, float *quad, float *err, int *iter);
 
 //
-// Differentiate polynomial 'a' returning result in 'b'. 
+// Differentiate polynomial 'a' returning result in 'b'.
 //
-void diff_poly(double *a,int n,double *b);
+void diff_poly(float *a, int n, float *b);
 
 //
 // Attempt to find a reliable estimate of a quadratic factor using modified
@@ -51,13 +51,13 @@ void diff_poly(double *a,int n,double *b);
 // the least number of roots at this location, and its estimate is
 // accepted as the root.
 //
-void recurse(double *a,int n,double *b,int m,double *quad, double *err,int *iter);
+void recurse(float *a, int n, float *b, int m, float *quad, float *err, int *iter);
 
 //
 // Top level routine to manage the determination of all roots of the given
 // polynomial 'a', returning the quadratic factors (and possibly one linear
 // factor) in 'x'.
-// 
-void get_quads(double *a,int n,double *quad,double *x);
+//
+void get_quads(float *a, int n, float *quad, float *x);
 
-double findRoot(double coeffs[], int n);
+float findRoot(float coeffs[], int n);

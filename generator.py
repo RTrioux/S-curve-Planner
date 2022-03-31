@@ -98,8 +98,8 @@ def generateFiles(n, outDir):
     try:
         with open(os.path.join(outDir, 'motionPlanning.h'), 'wr') as file:
             file.write('#include <math.h>\n\n')
-            file.write('void computePeriods(double Xpeak[], double T[]);\n') 
-            file.write('double getSetpoint(double Xpeak[], double T[], double t);\n') 
+            file.write('void computePeriods(float Xpeak[], float T[]);\n') 
+            file.write('float getSetpoint(float Xpeak[], float T[], float t);\n') 
     except Exception as err: 
         error(err)
 
@@ -107,10 +107,10 @@ def generateFiles(n, outDir):
         with open(os.path.join(outDir, 'motionPlanning.c'), 'w')  as file: 
             file.write('#include "motionPlanning.h"\n')
             file.write('#include "bbpr.h"\n\n')
-            file.write('void computePeriods(double Xpeak[], double T[]) {\n')
+            file.write('void computePeriods(float Xpeak[], float T[]) {\n')
             file.write('    int n = 0;\n')
-            file.write('    double coeffs[%d] = {%s};\n' % (n+1, ', '.join([ '0' for k in range(n+1)])))
-            file.write('    double Xmax = 0;\n\n')
+            file.write('    float coeffs[%d] = {%s};\n' % (n+1, ', '.join([ '0' for k in range(n+1)])))
+            file.write('    float Xmax = 0;\n\n')
 
             for p in range(n, 1-1, -1):
                 polyA   = genPolyA(n, p)
@@ -139,7 +139,7 @@ def generateFiles(n, outDir):
                     file.write('    }\n\n')
             file.write('}\n\n')
             
-            file.write('double getSetpoint(double Xpeak[], double T[], double t) {\n')
+            file.write('float getSetpoint(float Xpeak[], float T[], float t) {\n')
             
             for i, template in enumerate(templates[0]):
                 tA = intervals[i][0]

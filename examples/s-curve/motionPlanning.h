@@ -1,4 +1,4 @@
 #include <math.h>
 
-void computePeriods(double Xpeak[], double T[]);
-double getSetpoint(double Xpeak[], double T[], double t);
+void computePeriods(float Xpeak[], float T[]);
+float getSetpoint(float Xpeak[], float T[], float t);
